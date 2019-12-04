@@ -3,15 +3,26 @@
   <head>
     <meta charset="utf-8">
     <title>버스 조회</title>
+    <style type="text/css">
+ .idDiv{
+   position:absolute;
+   top:0;
+   right:0;
+  }
+</style>
   </head>
   <body>
+    <header>조회하고 싶은 버스의 정보를 입력해주세요!</header>
+    <div id="idDiv"><p id="memberMesg"></p></div>
+    <!-- 나중에 여기에 로그인버튼을 띄우거나 멤버이름을 띄우거나 함 -->
+
     <label for="to">출발지 : </label>
     <input type="text" id="to" value="">
     <label for="from">목적지 : </label>
     <input type="text" id="from" value="">
-    <button type="button" name="button">조회</button>
+    <button type="button" id="search">조회</button>
 
-    <table>
+    <table id="busResult">
       <thead>
         <th>버스 번호</th><th>일자</th><th>시간</th><th>잔여좌석</th>
       </thead>

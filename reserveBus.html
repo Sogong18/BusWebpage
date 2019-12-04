@@ -5,8 +5,22 @@
     <title>버스 예매</title>
   </head>
   <body>
-    <input type="text" name="" value="">
-    <input type="text" name="" value="">
-    <input type="text" name="" value="">
+    <header>해당 버스를 예매합니다</header>
+    <div id="idDiv"><p id="memberMesg"></p></div>
+    <!-- 나중에 여기에 로그인버튼을 띄우거나 멤버이름을 띄우거나 함 -->
+
+    <section>
+      <form class="" action="index.html" method="post">
+        <label for="adult">어른</label>
+        <input type="number" id="adult" value="0" min="0">
+        <label for="child">어린이</label>
+        <input type="number" id="child" value="0" min="0">
+
+        <p>선택 좌석수 : <span id="All_Seats"></span>개</p>
+        <p>총액 : <span id="amount"></span>원</p>
+        <input type="submit" id="payment" value="결제">
+      </form>
+      <p>!버스 좌석은 랜덤으로 배정됩니다.</p>
+    </section>
   </body>
 </html>

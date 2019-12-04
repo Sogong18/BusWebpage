@@ -5,8 +5,18 @@
     <title>예매 확인/취소</title>
   </head>
   <body>
-    <input type="text" name="" value="">
-    <input type="text" name="" value="">
-    <input type="text" name="" value="">
+    <header><span id="userName"></span>님의 예약 내역</header>
+    <div id="idDiv"><p id="memberMesg"></p></div>
+    <!-- 나중에 여기에 로그인버튼을 띄우거나 멤버이름을 띄우거나 함 -->
+
+    <section>
+      <ul id="reservedBusList">
+        <li class="listItemExample">
+          <p><span class="busNum">버스번호예</span>  <span class="departDay">2019-11-11</span>  <span class="departTime">21:00</span>~<span class="arriveTime">22:00</span>  <span class="to">대전</span>→<span class="from">서울</span></p>
+          <button type="button" class="cancel">취소</button>
+        </li>
+      </ul>
+      <!-- ???예약한 내역을 버스 리스트로 만들어서 li로 만들어 reservedBusList에 append -->
+    </section>
   </body>
 </html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>로그인 화면</title>
+  </head>
+  <body>
+    <h1> 로그인 </h1>
+    <div id="loginformDiv">
+      <form id="loginform" action ="login.php" method ="post" enctype="multipart/form-data" >
+        <p> E-Mail <input type ="text" name ="Email"/> </p>
+        <p> 비밀번호 <input type ="password" name ="pw"/> </p>
+      </form>
+    </div>
+    <div id = "buttonDiv">
+    <button id ="toJoin" onclick = "window.open('Join.html')"> 회원가입 </button>
+    <button id ="doLogin"> 로그인 </button>
+    </div>
+  </body>
+</html>

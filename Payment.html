@@ -1,43 +1,121 @@
 <!DOCTYPE html>
 <html lang="ko" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>결제 화면</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-    <div id ="idDiv"></div>
-    <p> 총 <span id ="amount"></span>원을 결제합니다. </p>
-    <div id ="cardinfo">
-      <form id="cardform" action ="card.php" method ="post" enctype="multipart/form-data" >
+
+<head>
+  <meta charset="utf-8">
+  <title>결제 화면</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&display=swap&subset=korean" rel="stylesheet">
+  <style type="text/css">
+    body {
+      height: 100%;
+      width: 100%;
+      background-color: #79BEA8;
+      font-family: "Nanum Gothic", sans-serif;
+    }
+
+    #topMenu,
+    #bottomMenu {
+      background-color: grey;
+      height: 30px;
+      position: fixed;
+      right: 8px;
+      left: 8px;
+    }
+
+    #bottomMenu {
+      position: fixed;
+      bottom: 8px;
+    }
+
+    #topMenu button,
+    #bottomMenu button {
+      position: absolute;
+
+      top: 3px;
+    }
+
+    #topMenu button {
+      position: absolute;
+      right: 0;
+    }
+
+    #topMenu p {
+      position: absolute;
+      right: 0;
+      margin: 0;
+      top: 4.5px;
+    }
+
+    section {
+      position: absolute;
+      top: 38px;
+      bottom: 38px;
+      right: 8px;
+      left: 8px;
+    }
+
+    /* 기본 레이아웃 및 상단바 하단바*/
+  </style>
+</head>
+
+<body>
+  <div id="topMenu">
+    <button id="loginbutton" onclick="location.href='Login.html'"> 로그인</button>
+    <!-- <p id="memberBar"><u>이름</u>님 안녕하세요!</p> -->
+    <!-- php에서 로그인을 통해 멤버의 이름을 가져오고 상단바에 버튼을 지우고 다음 paragraph를 띄움 -->
+  </div>
+  <div id="bottomMenu">
+    <button id="Leaving" onclick="location.href='Leaving.html'">탈퇴 하기</button>
+  </div>
+
+  <section>
+    <p> 총 <span id="amount"></span>원을 결제합니다. </p>
+    <div id="cardinfo">
+      <form id="cardform" action="card.php" method="post" enctype="multipart/form-data">
         <table id="jointable">
-          <tr><td>카드번호 :</td><td><input type="text" name ="cardNum" id="cardNum"/></td></tr>
-          <tr><td>CVC/CVV번호(3자리) :</td><td><input type ="password" name ="cvc" id="cvc"></td></tr>
-          <tr><td>카드 비밀번호(앞 2자리) :</td><td><input type ="password" name ="cardPw" id="cardPw"></td></tr>
-          <tr><td>유효기간 :</td><td><input type ="text" name ="expireDate" id="expireDat"></td></tr>
-          <tr><td colspan="2"><button id ="cancel" onclick ="history.back()"> 취소</button>
-              <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#payModal">결제</button></td></tr>
-              <!-- cancel 버튼 처리 다시해야함, 결제 onclick다시 해야함 -->
+          <tr>
+            <td>카드번호 :</td>
+            <td><input type="text" name="cardNum" id="cardNum" /></td>
+          </tr>
+          <tr>
+            <td>CVC/CVV번호(3자리) :</td>
+            <td><input type="password" name="cvc" id="cvc"></td>
+          </tr>
+          <tr>
+            <td>카드 비밀번호(앞 2자리) :</td>
+            <td><input type="password" name="cardPw" id="cardPw"></td>
+          </tr>
+          <tr>
+            <td>유효기간 :</td>
+            <td><input type="text" name="expireDate" id="expireDat"></td>
+          </tr>
+          <tr>
+            <td colspan="2"><button id="cancel" onclick="history.back()"> 취소</button>
+              <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#payModal">결제</button></td>
+          </tr>
+          <!-- cancel 버튼 처리 다시해야함, 결제 onclick다시 해야함 -->
         </table>
       </form>
-      </div>
-<!--
-      <div class ="modal fade" id= "payModal" role="dialog">
-        <div class="modal-content">
-        <div class ="modal-dialog">
-          <div class ="modal-body">
-            <p> 예매 취소 시 수수료에 대한 안내</p>
-            <p> 위의 안내를 확인했는지를 사용자에게 묻고, 결제를 확정함</p>
+    </div>
+    <!--
+        <div class ="modal fade" id= "payModal" role="dialog">
+          <div class="modal-content">
+          <div class ="modal-dialog">
+            <div class ="modal-body">
+              <p> 예매 취소 시 수수료에 대한 안내</p>
+              <p> 위의 안내를 확인했는지를 사용자에게 묻고, 결제를 확정함</p>
+            </div>
+            <div class ="modal-footer">
+              <button type ="button" class="btn btn-default" data-dismiss="modal"> 취소 </button>
+              <button type ="button" class ="toPayment" >확인</button>
+            </div>
           </div>
-          <div class ="modal-footer">
-            <button type ="button" class="btn btn-default" data-dismiss="modal"> 취소 </button>
-            <button type ="button" class ="toPayment" >확인</button>
-          </div>
-        </div>
-      </div></div>
- <!-- 결제버튼을 눌렀을 때 결제 안내에 대한 내용이 안내되어야한다. js 사용 예정 -->
+        </div></div>
+   <!-- 결제버튼을 눌렀을 때 결제 안내에 대한 내용이 안내되어야한다. js 사용 예정 -->
+  </section>
+</body>
 
-
-  </body>
 </html>

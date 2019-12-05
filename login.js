@@ -1,4 +1,5 @@
 
+
 function vaildcheckSignin(){
 var checkEmail = false;
 var checkCheck = false;
@@ -7,6 +8,8 @@ var validEmail =  /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 var inputEmail = document.getElementById("Email").value;
 var vaildPassword = /^.*(?=^.{8,15}$)(?=.*|d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
 var inputPassword = document.getElementById("pw").value;
+var inputName = document.getElementById('name').value;
+var inputPhnum = document.getElementById('phoneNum').value;
 
 if(inputEmail.match(validEmail)) {
 		checkEmail = true;
@@ -19,13 +22,15 @@ if(inputPassword.match(vaildPassword)){
 var submitData = "";
 var email = document.getElementsByClassName("Email");
 var password = document.getElementsByName("pw");
+var name = document.getElementsByName("name");
+var phoneNum = document.getElementsByName('phoneNum');
 
-if(inputEmail == "" || inputPassword ==""){
-		alert ("아이디 또는 패스워드의 입력양식을 체크해주세요");
+if(inputEmail == "" || inputPassword =="" || inputName ==""||inputPhnum==""){
+		alert ("빈칸을 남기지 말고 다 입력해주세요.");
 }
 
 else if(checkEmail === false || checkPassword === false) {
-		alert("아이디 또는 패스워드의 입력양식을 체크해주세요.");
+		alert("이메일 또는 패스워드의 입력양식을 체크해주세요.");
 
 }
 
@@ -41,9 +46,8 @@ else {
 		};
 		xhttp.open("POST", "join.php", true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhttp.send("Email="+inputEmail+"&password="+inputPassword);
-
-}
+		xhttp.send("Email="+inputEmail+"&password="+inputPassword+"&name="+inputName+"&phoneNum="+inputPhnum);
+  }
 }
 
 function vaildcheckSumit(){
@@ -97,5 +101,16 @@ else {
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send("Email="+inputEmail+"&password="+inputPassword);
 }
-schedulerCheck();
+}
+
+function backtologin(){
+	var inputEmail = document.getElementById("Email");
+	var inputPassword = document.getElementById("pw");
+	var inputName = document.getElementById('name');
+	var inputPhnum = document.getElementById('phoneNum');
+	inputEmail.value ="";
+	inputName.value ="";
+	inputPhnum.value ="";
+  window.history.back();
+
 }

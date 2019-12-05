@@ -6,15 +6,16 @@
   </head>
   <body>
     <h1> 로그인 </h1>
+    <div id ="idDiv"></div>
     <div id="loginformDiv">
-      <form id="loginform" action ="login.php" method ="post" enctype="multipart/form-data" >
-        <p> E-Mail <input type ="text" name ="Email"/> </p>
-        <p> 비밀번호 <input type ="password" name ="pw"/> </p>
+      <form id="loginform" action ="Login.php" method ="post" enctype="multipart/form-data" >
+        <p> E-Mail <input type ="text" name ="Email" id ="Email"/> </p>
+        <p> 비밀번호 <input type ="password" name ="pw" id ="pw"/> </p>
       </form>
     </div>
     <div id = "buttonDiv">
     <button id ="toJoin" onclick="location.href='Join.html'"> 회원가입 </button>
-    <button id ="doLogin" onclick ="vaildcheckSignin()"> 로그인 </button>
+    <input type ="button" value ="로그인" id ="doLogin" onclick ="vaildcheckSumit('loginformDiv')"/>
     </div>
     <script src = "login.js"></script>
   </body>

@@ -51,34 +51,36 @@ else {
 }
 
 function vaildcheckSumit(){
-  var checkEmail = false;
-  var checkCheck = false;
-  var checkPassword = false;
-  var validEmail =  /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-  var inputEmail = document.getElementById("Email").value;
-  var vaildPassword = /^.*(?=^.{8,15}$)(?=.*|d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
-  var inputPassword = document.getElementById("pw").value;
+	var checkEmail = false;
+	var checkCheck = false;
+	var checkPassword = false;
+	var validEmail =  /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	var inputEmail = document.getElementById("Email").value;
+	var vaildPassword = /^.*(?=^.{8,15}$)(?=.*|d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+	var inputPassword = document.getElementById("pw").value;
 
-  if(inputEmail.match(validEmail)) {
-  		checkEmail = true;
-  }
 
-  if(inputPassword.match(vaildPassword)){
-  		checkPassword=true;
-  }
+	if(inputEmail.match(validEmail)) {
+			checkEmail = true;
+	}
 
-  var submitData = "";
-  var email = document.getElementsByClassName("Email");
-  var password = document.getElementsByName("pw");
+	if(inputPassword.match(vaildPassword)){
+			checkPassword=true;
+	}
 
-  if(inputEmail == "" || inputPassword ==""){
-  		alert ("아이디 또는 패스워드의 입력양식을 체크해주세요");
-  }
+	var submitData = "";
+	var email = document.getElementsByClassName("Email");
+	var password = document.getElementsByName("pw");
 
-  else if(checkEmail === false || checkPassword === false) {
-  		alert("아이디 또는 패스워드의 입력양식을 체크해주세요.");
 
-}
+	if(inputEmail == "" || inputPassword ==""){
+			alert ("빈칸을 남기지 말고 다 입력해주세요.");
+	}
+
+	else if(checkEmail === false || checkPassword === false) {
+			alert("이메일 또는 패스워드의 입력양식을 체크해주세요.");
+
+	}
 
 else {
 		var submitData = "";
@@ -87,19 +89,16 @@ else {
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function(){
 			if(this.readyState==4&&this.status==200){
-				if(this.responseText == inputEmail){
-				sessionStorage.setItem('name', document.getElementById('Email').value);
-				// schedulerCheck();
-				var x = document.getElementById("idDiv");
+				// sessionStorage.setItem('name', document.getElementById('Email').value);
+				var x = document.getElementById('idDiv');
 				var t = document.createTextNode(this.responseText);
 				x.appendChild(t);
-				// document.body.appendChild(x);
-		   }
-			}
+			 }
 		};
-		xhttp.open("POST", "login.php", true);
+		xhttp.open("POST", "Login.php", true);
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send("Email="+inputEmail+"&password="+inputPassword);
+
 }
 }
 

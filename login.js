@@ -79,9 +79,11 @@ function vaildcheckSumit() {
         // if (this.responseText == inputEmail) {
           // sessionStorage.setItem('name', document.getElementById('Email').value);
           // schedulerCheck();
-          var x = document.getElementById("idDiv");
-          var t = document.createTextNode(this.responseText);
-          x.appendChild(t);
+
+          // var x = document.getElementById("idDiv");
+          // var t = document.createTextNode(this.responseText);
+          // x.appendChild(t);
+          alert(this.responseText);
           // document.body.appendChild(x);
         // }
       }

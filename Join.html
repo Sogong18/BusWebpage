@@ -3,9 +3,43 @@
   <head>
     <meta charset="utf-8">
     <title>회원가입 화면</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&display=swap&subset=korean" rel="stylesheet">
+    <style type="text/css">
+      body {
+        height: 100%;
+        width: 100%;
+        background-color: #79BEA8;
+        font-family: "Nanum Gothic", sans-serif;
+      }
+
+      #topMenu,
+      #bottomMenu {
+        background-color: grey;
+        height: 30px;
+        position: fixed;
+        right: 8px;
+        left: 8px;
+      }
+
+      #bottomMenu {
+        position: fixed;
+        bottom: 8px;
+      }
+
+      section {
+        position: absolute;
+        top: 38px;
+        bottom: 38px;
+        right: 8px;
+        left: 8px;
+      }
+
+      /* 기본 레이아웃 및 상단바 하단바*/
+    </style>
   </head>
   <body>
-    <div id ="joinDiv">
+    <section id ="joinDiv">
       <form id="joinfrom" action ="Join.php" method ="post" enctype="multipart/form-data" >
         <table id="jointable">
           <tr><td>* 이름 :</td><td><input type="text" name ="name" id="name"/></td></tr>
@@ -17,7 +51,7 @@
               <input type ="button" value ="회원가입" id="signin" onclick="vaildcheckSignin('joinDiv')"/></td></tr>
        </table>
       </form>
-    </div>
+    </section>
     <script src = "login.js"></script>
   </body>
 </html>

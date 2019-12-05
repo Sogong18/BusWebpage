@@ -5,41 +5,113 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Main</title>
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&display=swap&subset=korean" rel="stylesheet">
   <style type="text/css">
+    body {
+      height: 100%;
+      width: 100%;
+      background-color: #79BEA8;
+      font-family: "Nanum Gothic", sans-serif;
+    }
+
     #topMenu {
       background-color: grey;
       height: 30px;
+      position: absolute;
+      right: 8px;
+      left: 8px;
     }
 
     #topMenu button {
       position: absolute;
-      right: 8px;
-      top: 11px;
+      right: 0;
+      top: 3px;
     }
 
     #topMenu p {
       position: absolute;
-      right: 8px;
+      right: 0;
       margin: 0;
-      top: 12.5px;
+      top: 4.5px;
+    }
+
+    section {
+      position: absolute;
+      top: 38px;
+      bottom: 38px;
+      right: 8px;
+      left: 8px;
+    }
+
+    #bottomMenu {
+      background-color: grey;
+      height: 30px;
+      bottom: 8px;
+      position: absolute;
+      right: 8px;
+      left: 8px;
+    }
+
+    #bottomMenu button {
+      position: absolute;
+      top: 3px;
+    }
+
+    section button {
+      display: inline-block;
+      border-radius: 4px;
+      background-color: #E7F3EF;
+      color: #23483C;
+      text-align: center;
+      font-size: 28px;
+      padding: 10px;
+      width: 200px;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin: 5px;
+      border: 3px solid #23483C;
+    }
+
+    section button span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+    }
+
+    section button span:after {
+      content: '\00bb';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+
+    section button:hover span {
+      padding-right: 25px;
+    }
+
+    section button:hover span:after {
+      opacity: 1;
+      right: 0;
     }
   </style>
 </head>
 
 <body>
-  <header></header>
   <div id="topMenu">
-    <!-- <button id ="loginbutton" onclick="location.href='Login.html'" > 로그인</button> -->
-    <p id="memberBar"><u>이름</u>님 안녕하세요!</p>
+    <button id="loginbutton" onclick="location.href='Login.html'"> 로그인</button>
+    <!-- <p id="memberBar"><u>이름</u>님 안녕하세요!</p> -->
     <!-- php에서 로그인을 통해 멤버의 이름을 가져오고 상단바에 버튼을 지우고 다음 paragraph를 띄움 -->
   </div>
   <section>
-    <p><button id="busTicket"> 버스 예매 </button></p>
-    <p><button id="checkBusTicket"> 예매 확인</button></p>
-    <div id="LeavingDiv">
-      <button id="Leaving" onclick="location.href='Leaving.html'">탈퇴 하기</button>
-    </div>
+    <button id="busTicket" style="vertical-align:middle"><span>예매하기 </span></button>
+    <button id="checkBusTicket" style="vertical-align:middle"><span>예매 확인 </span></button>
   </section>
+  <div id="bottomMenu">
+    <button id="Leaving" onclick="location.href='Leaving.html'">탈퇴 하기</button>
+  </div>
 </body>
 
 </html>

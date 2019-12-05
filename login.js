@@ -38,7 +38,7 @@ function vaildcheckSignin() {
     };
     xhttp.open("POST", "Join.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("Email="+inputEmail+"&password="+inputPassword+"&name="+inputName+"&phoneNum="+inputPhnum);
+    xhttp.send("Email=" + inputEmail + "&password=" + inputPassword + "&name=" + inputName + "&phoneNum=" + inputPhnum);
   }
 }
 
@@ -60,9 +60,9 @@ function vaildcheckSumit() {
     checkPassword = true;
   }
 
-	var submitData = "";
-	var email = document.getElementsByClassName("Email");
-	var password = document.getElementsByName("pw");
+  var submitData = "";
+  var email = document.getElementsByClassName("Email");
+  var password = document.getElementsByName("pw");
 
   if (inputEmail == "" || inputPassword == "") {
     alert("아이디 또는 패스워드의 입력양식을 체크해주세요");
@@ -77,18 +77,18 @@ function vaildcheckSumit() {
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         // if (this.responseText == inputEmail) {
-          // sessionStorage.setItem('name', document.getElementById('Email').value);
-          // schedulerCheck();
-          var x = document.getElementById("idDiv");
-          var t = document.createTextNode(this.responseText);
-          x.appendChild(t);
-          // document.body.appendChild(x);
+        // sessionStorage.setItem('name', document.getElementById('Email').value);
+        // schedulerCheck();
+        var x = document.getElementById("idDiv");
+        var t = document.createTextNode(this.responseText);
+        x.appendChild(t);
+        // document.body.appendChild(x);
         // }
       }
     };
     xhttp.open("POST", "Login.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("Email="+inputEmail+"&password="+inputPassword);
+    xhttp.send("Email=" + inputEmail + "&password=" + inputPassword);
   }
 }
 

@@ -79,11 +79,10 @@ function vaildcheckSumit() {
         // if (this.responseText == inputEmail) {
           // sessionStorage.setItem('name', document.getElementById('Email').value);
           // schedulerCheck();
-
-          var x = document.getElementById("idDiv");
-          var t = document.createTextNode(this.responseText);
-          x.appendChild(t);
-          // alert(this.responseText);
+          // var x = document.getElementById("idDiv");
+          // var t = document.createTextNode(this.responseText);
+          // x.appendChild(t);
+          alert(this.responseText+ "님 환영합니다.");
           // document.body.appendChild(x);
         // }
       }

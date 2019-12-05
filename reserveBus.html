@@ -1,26 +1,88 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <title>버스 예매</title>
-  </head>
-  <body>
-    <header>해당 버스를 예매합니다</header>
-    <div id="idDiv"><p id="memberMesg"></p></div>
-    <!-- 나중에 여기에 로그인버튼을 띄우거나 멤버이름을 띄우거나 함 -->
 
-    <section>
-      <form class="" action="index.html" method="post">
-        <label for="adult">어른</label>
-        <input type="number" id="adult" value="0" min="0">
-        <label for="child">어린이</label>
-        <input type="number" id="child" value="0" min="0">
+<head>
+  <meta charset="utf-8">
+  <title>버스 예매</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&display=swap&subset=korean" rel="stylesheet">
+  <style type="text/css">
+    body {
+      height: 100%;
+      width: 100%;
+      background-color: #79BEA8;
+      font-family: "Nanum Gothic", sans-serif;
+    }
 
-        <p>선택 좌석수 : <span id="All_Seats"></span>개</p>
-        <p>총액 : <span id="amount"></span>원</p>
-        <input type="submit" id="payment" value="결제">
-      </form>
-      <p>!버스 좌석은 랜덤으로 배정됩니다.</p>
-    </section>
-  </body>
+    #topMenu,
+    #bottomMenu {
+      background-color: grey;
+      height: 30px;
+      position: fixed;
+      right: 8px;
+      left: 8px;
+    }
+
+    #bottomMenu {
+      position: fixed;
+      bottom: 8px;
+    }
+
+    #topMenu button,
+    #bottomMenu button {
+      position: absolute;
+
+      top: 3px;
+    }
+
+    #topMenu button {
+      position: absolute;
+      right: 0;
+    }
+
+    #topMenu p {
+      position: absolute;
+      right: 0;
+      margin: 0;
+      top: 4.5px;
+    }
+
+    section {
+      position: absolute;
+      top: 38px;
+      bottom: 38px;
+      right: 8px;
+      left: 8px;
+    }
+
+    /* 기본 레이아웃 및 상단바 하단바*/
+  </style>
+</head>
+
+<body>
+  <div id="topMenu">
+    <button id="loginbutton" onclick="location.href='Login.html'"> 로그인</button>
+    <!-- <p id="memberBar"><u>이름</u>님 안녕하세요!</p> -->
+    <!-- php에서 로그인을 통해 멤버의 이름을 가져오고 상단바에 버튼을 지우고 다음 paragraph를 띄움 -->
+  </div>
+
+  <section>
+    <form class="" action="index.html" method="post">
+      <label for="adult">어른</label>
+      <input type="number" id="adult" value="0" min="0">
+      <label for="child">어린이</label>
+      <input type="number" id="child" value="0" min="0">
+
+      <p>선택 좌석수 : <span id="All_Seats"></span>개</p>
+      <p>총액 : <span id="amount"></span>원</p>
+      <input type="submit" id="payment" value="결제">
+    </form>
+    <p>!버스 좌석은 랜덤으로 배정됩니다.</p>
+  </section>
+
+  <div id="bottomMenu">
+    <button id="Leaving" onclick="location.href='Leaving.html'">탈퇴 하기</button>
+  </div>
+</body>
+
 </html>

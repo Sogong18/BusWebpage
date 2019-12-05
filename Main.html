@@ -1,16 +1,45 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <title>main 화면</title>
-  </head>
-  <body>
-    <div id = "idDiv"></div>
-    <p><button id ="loginbutton" onclick="location.href='Login.html'" > 로그인</button></p>
-    <p><button id ="busTicket"> 버스 예매 </button></p>
-    <p><button id ="checkBusTicket"> 예매 확인</button></p>
-    <div id = "LeavingDiv">
-      <button id = "Leaving" onclick="location.href='Leaving.html'">탈퇴 하기</button>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Main</title>
+  <style type="text/css">
+    #topMenu {
+      background-color: grey;
+      height: 30px;
+    }
+
+    #topMenu button {
+      position: absolute;
+      right: 8px;
+      top: 11px;
+    }
+
+    #topMenu p {
+      position: absolute;
+      right: 8px;
+      margin: 0;
+      top: 12.5px;
+    }
+  </style>
+</head>
+
+<body>
+  <header></header>
+  <div id="topMenu">
+    <!-- <button id ="loginbutton" onclick="location.href='Login.html'" > 로그인</button> -->
+    <p id="memberBar"><u>이름</u>님 안녕하세요!</p>
+    <!-- php에서 로그인을 통해 멤버의 이름을 가져오고 상단바에 버튼을 지우고 다음 paragraph를 띄움 -->
+  </div>
+  <section>
+    <p><button id="busTicket"> 버스 예매 </button></p>
+    <p><button id="checkBusTicket"> 예매 확인</button></p>
+    <div id="LeavingDiv">
+      <button id="Leaving" onclick="location.href='Leaving.html'">탈퇴 하기</button>
     </div>
-  </body>
+  </section>
+</body>
+
 </html>

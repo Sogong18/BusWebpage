@@ -36,9 +36,9 @@ function vaildcheckSignin() {
         alert(this.responseText);
       }
     };
-    xhttp.open("POST", "join.php", true);
+    xhttp.open("POST", "Join.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("Email=" + inputEmail + "&password=" + inputPassword + "&name=" + inputName + "&phoneNum=" + inputPhnum);
+    xhttp.send("Email="+inputEmail+"&password="+inputPassword+"&name="+inputName+"&phoneNum="+inputPhnum);
   }
 }
 
@@ -76,19 +76,19 @@ function vaildcheckSumit() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        if (this.responseText == inputEmail) {
-          sessionStorage.setItem('name', document.getElementById('Email').value);
+        // if (this.responseText == inputEmail) {
+          // sessionStorage.setItem('name', document.getElementById('Email').value);
           // schedulerCheck();
           var x = document.getElementById("idDiv");
           var t = document.createTextNode(this.responseText);
           x.appendChild(t);
           // document.body.appendChild(x);
-        }
+        // }
       }
     };
-    xhttp.open("POST", "login.php", true);
+    xhttp.open("POST", "Login.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("Email=" + inputEmail + "&password=" + inputPassword);
+    xhttp.send("Email="+inputEmail+"&password="+inputPassword);
   }
 }
 

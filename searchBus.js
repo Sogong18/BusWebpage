@@ -1,10 +1,14 @@
+//EventListener를 추가하여 동작에 대한 이벤트를 만들어주는 부분
 var searchBtn = document.getElementById("search");
-searchBtn.addEventListener("click", btnClick);
+searchBtn.addEventListener("click", doSearch);
 
-var busListObj = document.getElementsByClassName("busList");
-// searchBtn.addEventListener("click", btnClick);
+//버스를 선택했을 때 예약을 할 수 있도록 예약 페이지로 이동하는 함수
+function doReserve() {
+  alert("!");
+}
 
-function btnClick() {
+//조건에 맞는 버스를 찾는 함수
+function doSearch() {
   var busTo = document.getElementById('to').value;
   var busFrom = document.getElementById('from').value;
   if (busTo == "") {
@@ -13,7 +17,6 @@ function btnClick() {
     alert("목적지를 입력해 주세요");
   } else {
     //제대로 값이 입력되었고 이 값들을 busData.txt에서 검사한다
-
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth() + 1;
@@ -39,7 +42,6 @@ function btnClick() {
         if (this.responseText == "") {
           alert("해당하는 버스가 없습니다.");
         } else {
-
           var busSearchResultArray = this.responseText.split("!");
 
           //php에서 가져온 조건에 맞는 버스들의 배열
@@ -61,6 +63,7 @@ function btnClick() {
                   trNode.append(tdNode);
                 }
               }
+              trNode.addEventListener("click", doReserve);
               tbodyToAppend.append(trNode);
             }
           }
@@ -74,11 +77,13 @@ function btnClick() {
   }
 }
 
+//입력한 input을 비워주는 함수
 function clearInputs() {
   document.getElementById('to').value = "";
   document.getElementById('from').value = "";
 }
 
+//input인 toCalculate에서 0의 갯수를 리턴하는 함수
 function calculateZero(toCalculate) {
   return (toCalculate.match(/0/g) || []).length;
 }

@@ -13,6 +13,20 @@ function btnClick() {
     alert("목적지를 입력해 주세요");
   } else {
     //제대로 값이 입력되었고 이 값들을 busData.txt에서 검사한다
+
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+      dd = '0' + dd
+    }
+    if (mm < 10) {
+      mm = '0' + mm
+    }
+    var time = today.getHours() + '' + today.getMinutes();
+    today = yyyy + '' + mm + '' + dd;
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
@@ -22,35 +36,49 @@ function btnClick() {
         }
         //자식 요소를 전부 제거
 
-        var busSearchResultArray = this.responseText.split("$");
-        //php에서 가져온 조건에 맞는 버스들의 배열
-        for (var i = 0; i < busSearchResultArray.length; i++) {
-          var trNode = document.createElement("tr");
-          trNode.setAttribute("class", "busList");
+        if (this.responseText == "") {
+          alert("해당하는 버스가 없습니다.");
+        } else {
 
-          var busDetailArray = busSearchResultArray[i].split("|");
-          for (var i = 0; i < busDetailArray.length; i++) {
-            var tdNode = document.createElement("td");
-            var txtNode = document.createTextNode(busDetailArray[i]);
-            tdNode.append(txtNode);
-            trNode.append(tdNode);
+          var busSearchResultArray = this.responseText.split("!");
+
+          //php에서 가져온 조건에 맞는 버스들의 배열
+          for (var i = 0; i < busSearchResultArray.length; i++) {
+            if (busSearchResultArray[i] != "") {
+              var trNode = document.createElement("tr");
+              trNode.setAttribute("class", "busList");
+
+              var busDetailArray = busSearchResultArray[i].split("|");
+              for (var j = 0; j < busDetailArray.length; j++) {
+                var tdNode = document.createElement("td");
+                if(j==3){
+                  var txtNode = document.createTextNode(calculateZero(busDetailArray[j])+"/45");
+                  tdNode.append(txtNode);
+                  trNode.append(tdNode);
+                }else {
+                  var txtNode = document.createTextNode(busDetailArray[j]);
+                  tdNode.append(txtNode);
+                  trNode.append(tdNode);
+                }
+              }
+              tbodyToAppend.append(trNode);
+            }
           }
-          //버스 정보를 갖는 tr만드는 반복문
-          /* 양식 이거임
-          <tr class="busList">
-            <td class="busNum">버스번호</td>
-            <td>버스번호</td>
-            <td>버스번호</td>
-            <td>버스번호</td>
-          </tr>
-          */
-
-          tbodyToAppend.append(trNode);
         }
       }
     };
     xhttp.open("POST", "search.php", true);
-    xhttp.send("to=" + busTo + "&from=" + busFrom);
-    //???시간도 같이 넘겨주기
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("toData=" + busTo + "&fromData=" + busFrom + "&date=" + today + "&time=" + time);
+    clearInputs();
   }
+}
+
+function clearInputs() {
+  document.getElementById('to').value = "";
+  document.getElementById('from').value = "";
+}
+
+function calculateZero(toCalculate) {
+  return (toCalculate.match(/0/g) || []).length;
 }

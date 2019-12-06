@@ -18,11 +18,9 @@ while (!feof($busFile)){
 
     $dateVaild = ($dateToCompare-$currentDate)*1;
     $timeVaild = ($timeToCompare-$currentTime)*1;
-    if (($dateVaild==0) && ($timeVaild>=0)) {
+    if ((($dateVaild==0) && ($timeVaild>=0))||($dateVaild>0)) {
       echo "{$indata[0]}|{$indata[1]}|{$indata[4]}~{$indata[5]}|{$indata[6]}!";
       //모든 조건에 맞는 버스의 정보만 가져와서 echo하도록 함
-    }elseif ($dateVaild>0) {
-      echo "{$indata[0]}|{$indata[1]}|{$indata[4]}~{$indata[5]}|{$indata[6]}!";      //모든 조건에 맞는 버스의 정보만 가져와서 echo하도록 함
     }
   }
 }

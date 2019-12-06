@@ -79,15 +79,13 @@
 
   <section>
     <h1>조회하고 싶은 버스의 정보를 입력해주세요!</h1>
-    <form class="" action="index.html" method="post">
-      <label for="to">출발지 : </label>
-      <input type="text" id="to" value="">
-      <label for="from">목적지 : </label>
-      <input type="text" id="from" value="">
-      <button type="button" id="search">조회</button>
-    </form>
+    <label for="to">출발지 : </label>
+    <input type="text" id="to" value="">
+    <label for="from">목적지 : </label>
+    <input type="text" id="from" value="">
+    <input type="button" id="search" value="조회">
 
-    <table id="busResult">
+    <table>
       <thead>
         <tr>
           <th>버스 번호</th>
@@ -96,8 +94,8 @@
           <th>잔여좌석</th>
         </tr>
       </thead>
-      <tbody>
-        <tr class="busListExample">
+      <tbody id="busResult">
+        <tr class="busList">
           <td class="busNum">버스번호</td>
           <td>버스번호</td>
           <td>버스번호</td>
@@ -112,6 +110,8 @@
   <div id="bottomMenu">
     <button id="Leaving" onclick="location.href='Leaving.html'">탈퇴 하기</button>
   </div>
+
+  <script src="searchBus.js"></script>
 </body>
 
 </html>

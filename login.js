@@ -42,10 +42,8 @@ function vaildcheckSignin() {
   }
 }
 
-
 function vaildcheckSumit() {
   var checkEmail = false;
-  var checkCheck = false;
   var checkPassword = false;
   var validEmail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
   var inputEmail = document.getElementById("Email").value;
@@ -60,7 +58,6 @@ function vaildcheckSumit() {
     checkPassword = true;
   }
 
-   var submitData = "";
    var email = document.getElementsByClassName("Email");
    var password = document.getElementsByName("pw");
 
@@ -70,9 +67,6 @@ function vaildcheckSumit() {
     alert("아이디 또는 패스워드의 입력양식을 체크해주세요.");
 
   } else {
-    var submitData = "";
-    submitData = document.getElementById("Email").value;
-
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
@@ -84,6 +78,7 @@ function vaildcheckSumit() {
           // x.appendChild(t);
           alert(this.responseText+ "님 환영합니다.");
           // 이후 페이지 넘어가게 하고 해당 회원의 회원번호를 주소창 아래 붙인다.
+          // 세션 이용해서 로그인된 상태인거 저장해야겠음
           // document.body.appendChild(x);
         // }
       }
@@ -94,14 +89,13 @@ function vaildcheckSumit() {
   }
 }
 
-function backtologin() {
-  var inputEmail = document.getElementById("Email");
-  var inputPassword = document.getElementById("pw");
-  var inputName = document.getElementById('name');
-  var inputPhnum = document.getElementById('phoneNum');
-  inputEmail.value = "";
-  inputName.value = "";
-  inputPhnum.value = "";
-  window.history.back();
-
-}
+// function backtologin() {
+//   var inputEmail = document.getElementById("Email");
+//   var inputPassword = document.getElementById("pw");
+//   var inputName = document.getElementById('name');
+//   var inputPhnum = document.getElementById('phoneNum');
+//   inputEmail.value = "";
+//   inputName.value = "";
+//   inputPhnum.value = "";
+//   window.history.back();
+// }

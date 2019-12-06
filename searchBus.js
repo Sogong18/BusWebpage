@@ -1,8 +1,8 @@
 var searchBtn = document.getElementById("search");
 searchBtn.addEventListener("click", btnClick);
 
-var searchBtn = document.getElementsByClassName("busList");
-searchBtn.addEventListener("click", btnClick);
+var busListObj = document.getElementsByClassName("busList");
+// searchBtn.addEventListener("click", btnClick);
 
 function btnClick() {
   var busTo = document.getElementById('to').value;
@@ -25,7 +25,7 @@ function btnClick() {
 
         //조건에 맞는 버스 요소를 만들어 append해준다
 
-        // alert(this.responseText + "님 환영합니다.");
+        alert(this.responseText + "님 환영합니다.");
       }
     };
     xhttp.open("POST", "search.php", true);

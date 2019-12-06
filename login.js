@@ -83,6 +83,7 @@ function vaildcheckSumit() {
           // var t = document.createTextNode(this.responseText);
           // x.appendChild(t);
           alert(this.responseText+ "님 환영합니다.");
+          // 이후 페이지 넘어가게 하고 해당 회원의 회원번호를 주소창 아래 붙인다.
           // document.body.appendChild(x);
         // }
       }

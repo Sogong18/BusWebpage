@@ -60,15 +60,8 @@
 </head>
 
 <body>
-  <div id="topMenu">
-    <button id="loginbutton" onclick="location.href='Login.html'"> 로그인</button>
-    <!-- <p id="memberBar"><u>이름</u>님 안녕하세요!</p> -->
-    <!-- php에서 로그인을 통해 멤버의 이름을 가져오고 상단바에 버튼을 지우고 다음 paragraph를 띄움 -->
-  </div>
-  <div id="bottomMenu">
-    <button id="Leaving" onclick="location.href='Leaving.html'">탈퇴 하기</button>
-  </div>
-
+  <div id="topMenu"></div>
+  <div id="bottomMenu"></div>
   <section>
     <h1><u id="userName"></u>님의 예약 내역</h1>
     <ul id="reservedBusList">
@@ -79,6 +72,7 @@
     </ul>
     <!-- ???예약한 내역을 버스 리스트로 만들어서 li로 만들어 reservedBusList에 append -->
   </section>
+  <script src="checkLogin.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 header ("Content-type:text/html; charset=utf-8");
 $HTTP_REFERER=$_SERVER['HTTP_REFERER'];
 $Email = $_POST["Email"];
@@ -9,6 +10,7 @@ while (!feof($myfile)){
     $indata = explode('|',fgets($myfile));
     if((!strcmp($Email,$indata[0])) && (!strcmp($pw,$indata[1]))){
       echo $indata[2];
+      $_SESSION['userid']=$indata[4];
       return ;
     }else {
       echo "nothing";

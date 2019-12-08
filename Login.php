@@ -12,8 +12,6 @@ while (!feof($myfile)){
       echo $indata[2];
       $_SESSION['userid']=$indata[4];
       return ;
-    }else {
-      echo "nothing";
     }
 }
 ?>

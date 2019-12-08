@@ -33,16 +33,16 @@ function vaildcheckSignin() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        alert(this.responseText);
+        alert("회원가입을 축하드립니다! 이제부터 해당 아이디로 로그인하실 수 있습니다.");
       }
     };
     xhttp.open("POST", "Join.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("Email="+inputEmail+"&password="+inputPassword+"&name="+inputName+"&phoneNum="+inputPhnum);
+    xhttp.send("Email=" + inputEmail + "&password=" + inputPassword + "&name=" + inputName + "&phoneNum=" + inputPhnum);
   }
 }
 
-function vaildcheckSumit() {
+function loginWithVaildCheck() {
   var checkEmail = false;
   var checkPassword = false;
   var validEmail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
@@ -58,34 +58,28 @@ function vaildcheckSumit() {
     checkPassword = true;
   }
 
-   var email = document.getElementsByClassName("Email");
-   var password = document.getElementsByName("pw");
+  var email = document.getElementsByClassName("Email");
+  var password = document.getElementsByName("pw");
 
   if (inputEmail == "" || inputPassword == "") {
     alert("아이디 또는 패스워드의 입력양식을 체크해주세요");
   } else if (checkEmail === false || checkPassword === false) {
     alert("아이디 또는 패스워드의 입력양식을 체크해주세요.");
-
   } else {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        // if (this.responseText == inputEmail) {
-          // sessionStorage.setItem('name', document.getElementById('Email').value);
-          // schedulerCheck();
-          // var x = document.getElementById("idDiv");
-          // var t = document.createTextNode(this.responseText);
-          // x.appendChild(t);
-          alert(this.responseText+ "님 환영합니다.");
-          // 이후 페이지 넘어가게 하고 해당 회원의 회원번호를 주소창 아래 붙인다.
-          // 세션 이용해서 로그인된 상태인거 저장해야겠음
-          // document.body.appendChild(x);
-        // }
+        if (this.responseText == "") {
+          alert("아이디와 비밀번호를 확인해 주세요");
+        } else {
+          alert(this.responseText + "님으로 로그인되셨습니다.");
+          location.href = "Main.html";
+        }
       }
     };
     xhttp.open("POST", "Login.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("Email="+inputEmail+"&password="+inputPassword);
+    xhttp.send("Email=" + inputEmail + "&password=" + inputPassword);
   }
 }
 

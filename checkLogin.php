@@ -5,7 +5,7 @@ if(!isset($_SESSION['userid'])){
   //로그인되지 않은 상태일 때에는 상단바에 로그인 버튼 하나 append해주기
 }else {
   echo "logined!";
-  $memberFile = fopen("./data/busMember.txt", "a+") or die("Unable to open file!");
+  $memberFile = fopen("./data/busMember.txt", "a+") or die("error");
   while (!feof($memberFile)){
     $indata = explode('|',fgets($memberFile));
     if(strcmp($_SESSION['userid'],$indata[4])==0){

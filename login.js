@@ -34,6 +34,7 @@ function vaildcheckSignin() {
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         alert("회원가입을 축하드립니다! 이제부터 해당 아이디로 로그인하실 수 있습니다.");
+        location.href = "Login.html";
       }
     };
     xhttp.open("POST", "Join.php", true);

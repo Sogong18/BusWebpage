@@ -21,7 +21,6 @@ fclose($myfile);
 
 $newfile = fopen("./data/busMember.txt", "w+") or die("Unable to open file!");
 fwrite($newfile, $buffer);
-fwrite($newfile,"\n");
 fclose($newfile);
 
 echo "회원탈퇴가 완료되었습니다! BYE!";

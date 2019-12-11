@@ -63,7 +63,7 @@ function loginWithVaildCheck() {
   var password = document.getElementsByName("pw");
 
   if (inputEmail == "" || inputPassword == "") {
-    alert("아이디 또는 패스워드의 입력양식을 체크해주세요");
+    alert("빈칸을 남기지 말고 다 입력해주세요.");
   } else if (checkEmail === false || checkPassword === false) {
     alert("아이디 또는 패스워드의 입력양식을 체크해주세요.");
   } else {

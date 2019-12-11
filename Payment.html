@@ -2,11 +2,11 @@
 <html lang="ko" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8"  name="viewport" content="width=device-width, initial-scale=1" >
   <title>결제 화면</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
   <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&display=swap&subset=korean" rel="stylesheet">
   <style type="text/css">
     body {
@@ -36,7 +36,6 @@
 
       top: 3px;
     }
-
     #topMenu button {
       position: absolute;
       right: 0;
@@ -57,6 +56,69 @@
       left: 8px;
     }
 
+    .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+  }
+
+  #myBtn{
+    font-size: 15px;
+    font-weight: bold;
+    width: 150px;
+    margin-top: 20px;
+  }
+
+  #cancelInfo{
+    text-align: center;
+  }
+
+  #vaildinfo{
+    font-size: 11px;
+    color: red;
+    font-weight: bold;
+  }
+
+  td{
+    font-weight: bold;
+  }
+
+  body{
+    text-align: center;
+  }
+  button{
+    background-color: rgba(0,0,0,0);
+    background-color: #E7F3EF;
+    border: 2px solid #23483C;
+    color: #23483C;
+    border-radius: 5%;
+    font-size: 15px;
+    font-style: bold;
+  }
+  table{
+    text-align: left;
+    margin: 0 auto;
+  }
+  h1{
+    margin-bottom: 100px;
+  }
     /* 기본 레이아웃 및 상단바 하단바*/
   </style>
 </head>
@@ -64,53 +126,76 @@
 <body>
   <div id="topMenu"></div>
   <div id="bottomMenu"></div>
-
   <section>
+    <h1> 결제 </h1>
     <p> 총 <span id="amount"></span>원을 결제합니다. </p>
     <div id="cardinfo">
       <form id="cardform" action="card.php" method="post" enctype="multipart/form-data">
-        <table id="jointable">
+
+        <table id="paytable">
+          <tr>
+            <td>카드회사 :</td>
+            <td><input type="text" name="cardCom" id="cardCom" /></td>
+          </tr>
           <tr>
             <td>카드번호 :</td>
             <td><input type="text" name="cardNum" id="cardNum" /></td>
           </tr>
           <tr>
             <td>CVC/CVV번호(3자리) :</td>
-            <td><input type="password" name="cvc" id="cvc"></td>
+            <td><input type="password" name="cvc" id="cvc" maxlength="3"></td>
           </tr>
           <tr>
             <td>카드 비밀번호(앞 2자리) :</td>
-            <td><input type="password" name="cardPw" id="cardPw"></td>
+            <td><input type="password" name="cardPw" id="cardPw" maxlength="2"></td>
           </tr>
           <tr>
             <td>유효기간 :</td>
-            <td><input type="text" name="expireDate" id="expireDat"></td>
+            <td><input type="text" name="expireDate" id="expireDate" maxlength="4"></td>
           </tr>
-          <tr>
-            <td colspan="2"><button id="cancel" onclick="history.back()"> 취소</button>
-              <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#payModal">결제</button></td>
-          </tr>
-          <!-- cancel 버튼 처리 다시해야함, 결제 onclick다시 해야함 -->
         </table>
       </form>
+      <p id="vaildinfo">* 유효기간은 카드 뒷면 '00/00'에서 '/'을 제외한 숫자 4개를 입력해주세요. </p>
     </div>
-    <!--
-        <div class ="modal fade" id= "payModal" role="dialog">
-          <div class="modal-content">
-          <div class ="modal-dialog">
-            <div class ="modal-body">
-              <p> 예매 취소 시 수수료에 대한 안내</p>
-              <p> 위의 안내를 확인했는지를 사용자에게 묻고, 결제를 확정함</p>
-            </div>
-            <div class ="modal-footer">
-              <button type ="button" class="btn btn-default" data-dismiss="modal"> 취소 </button>
-              <button type ="button" class ="toPayment" >확인</button>
-            </div>
-          </div>
-        </div></div>-->
-   <!-- 결제버튼을 눌렀을 때 결제 안내에 대한 내용이 안내되어야한다. js 사용 예정 -->
-  </section>
-  <script src="checkLogin.js"></script>
-</body>
 
+      <button id="myBtn">결제</button>
+      <div id="myModal" class="modal">
+      <div class="modal-content">
+        <!-- <span class="close">&times;</span> -->
+        <div id="cancelInfo">
+        <p><strong>[예매 취소 시 수수료에 대한 안내]</strong></p>
+        <p>결제를 완료한 버스표에 대해서, 취소 시 수수료는 다음과 같습니다.</p>
+        <p>출발 1일 전까지 : 전액 환불</p>
+        <p>그 이후 : 환불 불가능 </p>
+        <br/> <p> 위의 내용을 확인하셨으며, 결제를 진행하시겠습니까?</p>
+        <button id= "cancelPayment">취소</button>&nbsp;&nbsp;&nbsp;
+        <button id= "cotinuePayment" onclick ="goPayment()">확인</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src = "Payment.js"></script>
+  <script src="checkLogin.js"></script>
+  <script>
+
+  var modal = document.getElementById("myModal");
+  var btn = document.getElementById("myBtn");
+  var cancel = document.getElementById("cancelPayment");
+
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  cancel.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  </script>
+</body>
 </html>

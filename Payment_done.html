@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" dir="ltr">
 
 <head>
   <meta charset="utf-8">
-  <title>버스 조회</title>
+  <title>결제완료화면</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&display=swap&subset=korean" rel="stylesheet">
   <style type="text/css">
@@ -55,22 +55,27 @@
       left: 8px;
     }
 
-    /* 기본 레이아웃 및 상단바 하단바*/
-
-    section h1 {
-      text-align: center;
+    #businfoDibv{
+      border: 3px solid black;
+      background-color: white;
+      width: 60%;
+      padding: 10px;
     }
 
-    table,
-    td,
-    th {
-      border: 1px solid black;
-      border-collapse: collapse;
+    td{
+      font-weight: bold;
     }
 
     body{
-      text-align: center;
+     text-align: center;
+     margin: 0 auto;
     }
+
+    div{
+      text-align: center;
+      margin: 0 auto;
+    }
+    
     button{
       background-color: rgba(0,0,0,0);
       background-color: #E7F3EF;
@@ -80,34 +85,33 @@
       font-size: 15px;
       font-style: bold;
     }
+    /* 기본 레이아웃 및 상단바 하단바*/
   </style>
 </head>
 
 <body>
   <div id="topMenu"></div>
   <section>
-    <h1>조회하고 싶은 버스의 정보를 입력해주세요!</h1>
-    <label for="to">출발지 : </label>
-    <input type="text" id="to" value="" autofocus>
-    <label for="from">목적지 : </label>
-    <input type="text" id="from" value="">
-    <input type="button" id="search" value="조회">
-
-    <table>
-      <thead>
-        <tr>
-          <th>버스 번호</th>
-          <th>일자</th>
-          <th>시간</th>
-          <th>잔여좌석</th>
-        </tr>
-      </thead>
-      <tbody id="busResult"></tbody>
+    <p><strong>선택하신 버스의 예매가 완료되었습니다!</strong></p>
+    <div id = "businfoDibv">
+    <table id = "doneBusInfo">
+      <tr><td>버스번호: </td><td></td></tr>
+      <tr><td>출발일: </td><td></td></tr>
+      <tr><td>출발시각-도착시각: </td><td></td></tr>
+      <tr><td>출발지-도착지: </td><td></td></tr>
+        <!-- 유민아 여기에 버스정보 넣어주면된당!!! -->
     </table>
+    </div>
+    <br/><p><strong>도착지<span id="to"></span>에 대한 관광명소 추천을 받으시겠습니까?</strong></p>
+    <br/><button id = "recoNo" onclick = "no()">아니오</button>&nbsp;&nbsp;&nbsp;
+          <button id = "recoYes" onclick = "location.href='Attractions.html'">예</button>
+    <div id="attractionInfo">
+    </div>
   </section>
   <div id="bottomMenu"></div>
-  <script src="searchBus.js"></script>
   <script src="checkLogin.js"></script>
+  <script src="Attractions.js"></script>
+  <script src="Payment_done.js"></script>
 </body>
 
 </html>

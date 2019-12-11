@@ -96,16 +96,38 @@
       opacity: 1;
       right: 0;
     }
+    .displaynone{
+      display:none;
+    }
+    #busTicket{
+      margin-top: 200px;
+    }
+    #checkBusTicket{
+      margin-top: 30px;
+    }
+    body{
+      text-align: center;
+    }
+    button{
+      background-color: rgba(0,0,0,0);
+      background-color: #E7F3EF;
+      border: 2px solid #23483C;
+      color: #23483C;
+      border-radius: 5%;
+      font-size: 15px;
+      font-style: bold;
+    }
   </style>
 </head>
 
 <body>
   <div id="topMenu"></div>
   <section>
-    <button id="busTicket" style="vertical-align:middle" onclick = "location.href='searchBus.html'"><span>예매하기 </span></button>
+    <button id="busTicket" style="vertical-align:middle" onclick = "location.href='searchBus.html'"><span>예매하기</span></button><br/>
     <button id="checkBusTicket" style="vertical-align:middle"  onclick = "location.href='checkReserved.html'"><span>예매 확인 </span></button>
   </section>
   <div id="bottomMenu"></div>
+
   <script src="checkLogin.js"></script>
 </body>
 

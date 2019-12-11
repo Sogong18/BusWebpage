@@ -55,24 +55,90 @@
       left: 8px;
     }
 
+    #attrationList{
+      font-size: 20px;
+      /* margin-bottom: 15px; */
+      font-weight: bold;
+      border: 2px solid #23483C;
+      width: 700px;
+      height: auto;
+      background-color: #E7F3EF;
+      padding: 15px;
+      margin: 0 auto;
+    }
+
+    li{
+      margin-bottom: 15px;
+    }
+    li:hover{
+      color: red;
+    }
+    #attractionInfo{
+      position: absolute;
+      width: 1000px;
+      height: 300px;
+      left: 50%;
+      top: 50%;
+      margin-left: -500px;
+      margin-top: -150px;
+      display: none;
+      border: 2px solid black;
+      background: white;
+      font-size: 20px;
+    }
+    table{
+      margin: 0 auto;
+    }
+    td{
+      text-align: left;
+    }
+    body{
+      text-align: center;
+    }
+    #ok{
+      background-color: rgba(0,0,0,0);
+      background-color: #89A37C;
+      border: 2px solid #89A37C;
+      border-radius: 5%;
+      margin: 25px;
+      font-size: 20px;
+      font-style: bold;
+    }
+
+    button{
+      background-color: rgba(0,0,0,0);
+      background-color: #E7F3EF;
+      border: 2px solid #23483C;
+      color: #23483C;
+      border-radius: 5%;
+      font-size: 15px;
+      font-style: bold;
+    }
     /* 기본 레이아웃 및 상단바 하단바*/
   </style>
 </head>
 
-<body>
+<body onload="search()">
   <div id="topMenu"></div>
   <section>
-    <p> 도착지 <span id="from"></span>의 관광명소 </p>
-    <div id="attrationList">
-      <li> 관광명소이름 1 </li>
-      <li> 관광명소이름 2 </li>
-    </div>
+    <h1>[도착지 <span id="to">서울</span>의 관광명소]</h1>
+    <br/><br/>
+    <!-- 임의로 적었음. 목적지 id 를 to라고 임의로 지정 -->
+    <div id="attrationList"></div>
     <!-- pop up 형태로 띄워줌.. -->
+
     <div id="attractionInfo">
+      <table id = "lookplace">
+        <tr><td colspan ="2" style="text-align:center; font-size: 22px; padding-bottom:50px;  padding-top:20px"> <strong> 관광명소 정보는 다음과 같습니다!</strong></td></tr>
+        <tr><td>이름 :&nbsp;&nbsp;&nbsp;</td><td><span id = "inputplacename"></span></td></tr>
+        <tr><td>주소 :&nbsp;&nbsp;&nbsp;</td><td><span id = "inputplaceadd"></span></td></tr>
+        <tr><td>정보 :&nbsp;&nbsp;&nbsp;</td><td><span id = "inputplaceinfo"></span></td></tr>
+      </table>
+      <button id ="ok" onclick ="divgone()">확인</button>
     </div>
   </section>
   <div id="bottomMenu"></div>
   <script src="checkLogin.js"></script>
+  <script src="Attractions.js"></script>
 </body>
-
 </html>

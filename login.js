@@ -33,7 +33,7 @@ function vaildcheckSignin() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        alert("회원가입을 축하드립니다! 이제부터 해당 아이디로 로그인하실 수 있습니다.");
+        alert("회원가입을 축하드립니다! 해당 아이디로 로그인하실 수 있습니다.");
         location.href = "Login.html";
       }
     };
@@ -71,7 +71,7 @@ function loginWithVaildCheck() {
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         if (this.responseText == "") {
-          alert("아이디와 비밀번호를 확인해 주세요");
+          alert("아이디와 비밀번호가 일치하지 않습니다.");
         } else {
           alert(this.responseText + "님으로 로그인되셨습니다.");
           location.href = "Main.html";
@@ -84,13 +84,18 @@ function loginWithVaildCheck() {
   }
 }
 
-// function backtologin() {
-//   var inputEmail = document.getElementById("Email");
-//   var inputPassword = document.getElementById("pw");
-//   var inputName = document.getElementById('name');
-//   var inputPhnum = document.getElementById('phoneNum');
-//   inputEmail.value = "";
-//   inputName.value = "";
-//   inputPhnum.value = "";
-//   window.history.back();
-// }
+function backtologin() {
+  var joinconfrim = confirm("회원가입을 취소하시겠습니까?");
+  if(joinconfrim == true){
+  var inputEmail = document.getElementById("Email");
+  var inputPassword = document.getElementById("pw");
+  var inputName = document.getElementById('name');
+  var inputPhnum = document.getElementById('phoneNum');
+  inputEmail.value = "";
+  inputName.value = "";
+  inputPhnum.value = "";
+  window.location.href ="Login.html";
+}else if(joinconfrim == false){
+  alert("회원가입을 진행합니다.");
+}
+}

@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', function() {
         btmMenuToAppend.removeChild(btmMenuToAppend.firstChild);
       }
       //자식 요소를 전부 제거
-      
+
       var isLoginedArray = this.responseText.split("!");
       if (isLoginedArray[0] == "unLogined") { //로그인이 안 되어있을때
         var btnNode = document.createElement("button");
@@ -23,7 +23,9 @@ window.addEventListener('DOMContentLoaded', function() {
       } else { //로그인이 되어있을때
         var btnNode = document.createElement("button");
         btnNode.setAttribute("id", "Leaving");
-        btnNode.setAttribute("onclick","location.href='Leaving.html'");
+        btnNode.onclick = function() {
+                          leaving();
+                          };
         var txtNode = document.createTextNode("탈퇴 하기");
         btnNode.append(txtNode);
         btmMenuToAppend.append(btnNode);
@@ -45,3 +47,23 @@ window.addEventListener('DOMContentLoaded', function() {
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("");
 });
+
+function leaving(){
+  var check = confirm("회원님에 대한 모든 정보가 삭제됩니다. 회원 탈퇴를 계속하시겠습니까?");
+  if(check == true){
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function(){
+      if(this.readyState==4&&this.status==200){
+        alert(this.responseText);
+      }
+    };
+    var id = document.getElementById('memberBar').children[0].innerText;
+    xhttp.open("POST", "leaving.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("id="+id);
+  }
+  else if(check == false){
+    window.location.replace = "Main.html";
+    alert("회원 탈퇴가 취소되었습니다!");
+  }
+}

@@ -61,9 +61,9 @@ function leaving(){
     xhttp.open("POST", "leaving.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("id="+id);
+    window.location.reload();
   }
   else if(check == false){
-    window.location.replace = "Main.html";
     alert("회원 탈퇴가 취소되었습니다!");
   }
 }

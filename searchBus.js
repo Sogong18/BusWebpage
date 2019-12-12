@@ -3,8 +3,8 @@ var searchBtn = document.getElementById("search");
 searchBtn.addEventListener("click", doSearch);
 
 //버스를 선택했을 때 예약을 할 수 있도록 예약 페이지로 이동하는 함수
-function doReserve(busNum) {
-  location.href = "busDetail.html?busNum:"+busNum;
+function goDetailPage(busNum) {
+  location.href = "busDetail.html?busNum:" + busNum;
 }
 
 //조건에 맞는 버스를 찾는 함수
@@ -53,17 +53,19 @@ function doSearch() {
               var busDetailArray = busSearchResultArray[i].split("|");
               for (var j = 0; j < busDetailArray.length; j++) {
                 var tdNode = document.createElement("td");
-                if(j==3){
-                  var txtNode = document.createTextNode(calculateZero(busDetailArray[j])+"/45");
+                if (j == 3) {
+                  var txtNode = document.createTextNode(calculateZero(busDetailArray[j]) + "/45");
                   tdNode.append(txtNode);
                   trNode.append(tdNode);
-                }else {
+                } else {
                   var txtNode = document.createTextNode(busDetailArray[j]);
                   tdNode.append(txtNode);
                   trNode.append(tdNode);
                 }
               }
-              trNode.addEventListener("click", function(){doReserve(busDetailArray[0])});
+              trNode.addEventListener("click", function(busDetailArray) {
+                goDetailPage(this.children[0].innerText + "");
+              });
               tbodyToAppend.append(trNode);
             }
           }

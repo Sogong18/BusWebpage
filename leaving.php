@@ -9,13 +9,12 @@ $myfile = fopen("./data/busMember.txt", "r") or die("Unable to open file!");
 while (!feof($myfile)){
     $data = fgets($myfile);
     $indata = explode('|',$data);
-    echo $id;
     if(strcmp($id,$indata[2])==0){
       $data = "";
     }
     $buffer = $buffer . $data;
 }
-echo $buffer;
+// echo $buffer;
 
 fclose($myfile);
 

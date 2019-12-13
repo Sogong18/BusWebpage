@@ -14,4 +14,5 @@ while (!feof($myfile)){
       return ;
     }
 }
+fclose($myfile);
 ?>

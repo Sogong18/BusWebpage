@@ -3,13 +3,13 @@ var remainingSeatNum = 0;
 var currentBusSeat;
 var availSelect = 0;
 
-document.getElementById("payment").addEventListener("click",function() {
+document.getElementById("payment").addEventListener("click", function() {
   var seatNumbers = "";
-  for(var i=0;i<document.getElementsByClassName("selected").length;i++){
-    seatNumbers += document.getElementsByClassName("selected")[i].getAttribute("id").split("t")[1]+"|";
+  for (var i = 0; i < document.getElementsByClassName("selected").length; i++) {
+    seatNumbers += document.getElementsByClassName("selected")[i].getAttribute("id").split("t")[1] + "|";
   }
   //선택된 좌석의 번호도 같이 보내기
-  location.href = "Payment.html?totalNum:" + document.getElementById("amount").innerText + "?busNum:" + recivedBusNum+"?seatNums"+seatNumbers;
+  location.href = "Payment.html?totalNum:" + document.getElementById("amount").innerText + "?busNum:" + recivedBusNum + "?seatNums:" + seatNumbers;
 });
 
 window.addEventListener('DOMContentLoaded', function() {
@@ -49,7 +49,7 @@ function calculateZero(toCalculate) {
 
 //좌석을 선택하면 이미 선택된 좌석(selected)가 아니거나 empty좌석이 아닐경우 선택할 수 있도록 함
 function selectThisSeat(id) {
-  if ((availSelect > 0)&&(document.getElementById(id).getAttribute("class")==null)) {
+  if ((availSelect > 0) && (document.getElementById(id).getAttribute("class") == null)) {
     document.getElementById(id).setAttribute("class", "selected");
     availSelect--;
   }
@@ -68,7 +68,7 @@ function changeOnInput(currentObject) {
     //원래대로 값 되돌리기
   } else {
     availSelect = totalSeats;
-    document.getElementById("amount").innerText = document.getElementById("adult").value*13600 + document.getElementById("child").value*9300;
+    document.getElementById("amount").innerText = document.getElementById("adult").value * 13600 + document.getElementById("child").value * 9300;
     document.getElementById("All_Seats").innerText = totalSeats;
   }
 }

@@ -77,15 +77,10 @@
   <div id="bottomMenu"></div>
   <section>
     <h1><u id="userName"></u>님의 예약 내역</h1>
-    <ul id="reservedBusList">
-      <li class="listItemExample">
-        <p><span class="busNum">버스번호예</span> <span class="departDay">2019-11-11</span> <span class="departTime">21:00</span>~<span class="arriveTime">22:00</span> <span class="to">대전</span>→<span class="from">서울</span></p>
-        <button type="button" class="cancel">취소</button>
-      </li>
-    </ul>
-    <!-- ???예약한 내역을 버스 리스트로 만들어서 li로 만들어 reservedBusList에 append -->
+    <ul id="reservedBusList"></ul>
   </section>
   <script src="checkLogin.js"></script>
+  <script src="checkReserved.js"></script>
 </body>
 
 </html>

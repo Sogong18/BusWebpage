@@ -48,5 +48,5 @@ document.getElementById("payment").addEventListener("click", function() {
 });
 
 function goPaymentPage(totalNum){
-  location.href = "Payment.html?totalNum:" + totalNum;
+  location.href = "Payment.html?totalNum:" + totalNum+"?busNum:"+recivedBusNum;
 }

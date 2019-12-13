@@ -38,7 +38,7 @@ function goPayment() {
     var busnumber =  ((window.location.href).split("?"))[2];
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        alert("good");
+        console.log("결제가 완료되었습니다.");
       }
     };
     xhttp.open("POST", "Payment.php", true);
@@ -48,6 +48,7 @@ function goPayment() {
     // alert("결제가 완료되었습니다.");
     var a = document.getElementById('myModal');
     a.style.display = "none";
+    console.log("결제가 완료되었습니다.");
     location.href = "Payment_done.html?" + ((window.location.href).split("?"))[2];
   }
 }

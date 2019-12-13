@@ -10,6 +10,7 @@ window.addEventListener('DOMContentLoaded', function() {
         document.getElementById("departDay").innerText = busDetailDataArray[0];
         document.getElementById("place").innerText = busDetailDataArray[1]+"-"+busDetailDataArray[2];
         document.getElementById("departTime").innerText = busDetailDataArray[3];
+        document.getElementById("to").innerText = busDetailDataArray[2];
         // document.getElementById("Time_required").innerText = busDetailDataArray[4];
       } else {
         alert("버스 정보 파일을 로드할 수 없습니다.");

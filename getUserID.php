@@ -7,7 +7,7 @@
   while (!feof($memberFile)){
     $memberData = explode('|',fgets($memberFile));
     if(strcmp($_SESSION['userid'],$memberData[4])==0){
-      echo "{$memberData[2]}|";
+      echo "{$memberData[2]}!";
       break;
     }
   }
@@ -16,9 +16,9 @@
   $reservefile = fopen("./data/reserveList.txt", "a+") or die("openError|");
   while (!feof($reservefile)){
     $indata = explode('|',fgets($reservefile));
-    $isEqualId = $_SESSION['userid']==$indata[0];
+    $isEqualId = ($_SESSION['userid']==$indata[0]);
     if($isEqualId){
-      echo $indata[1]+"|";
+      echo $indata[1]+"!";
     }
   }
   fclose($reservefile);

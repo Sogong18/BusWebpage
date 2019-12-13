@@ -19,8 +19,9 @@ while (!feof($busFile)){
     }
     $duTime = $arriveT-$departT;
     //소요시간 구하기
-    
-    echo "{$indata[1]}|{$indata[2]}|{$indata[3]}|{$indata[4]}|{$duTime}";
+    $remainingSeat = $indata[6];
+
+    echo "{$indata[1]}|{$indata[2]}|{$indata[3]}|{$indata[4]}|{$duTime}|{$remainingSeat}";
     break;
   }
 }

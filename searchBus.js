@@ -64,7 +64,11 @@ function doSearch() {
                 }
               }
               trNode.addEventListener("click", function(busDetailArray) {
-                goDetailPage(this.children[0].innerText + "");
+                if(this.children[3].innerText=="0/45"){
+                  alert("선택한 버스는 남은 좌석이 없어 예매하실 수 없습니다.");
+                }else{
+                  goDetailPage(this.children[0].innerText + "");
+                }
               });
               tbodyToAppend.append(trNode);
             }

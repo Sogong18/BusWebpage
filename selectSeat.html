@@ -59,7 +59,6 @@
 
     table,
     td {
-      border: 1px solid black;
       border-collapse: collapse;
     }
 
@@ -68,9 +67,8 @@
       width: 50px;
     }
 
-    .empty {
-      border-top-color: #79BEA8;
-      border-bottom-color: #79BEA8;
+    td:not(.empty) {
+      border: 1px solid black;
     }
 
     body {
@@ -86,6 +84,14 @@
       font-size: 15px;
       font-style: bold;
     }
+
+    .occupied {
+      background-color: grey;
+    }
+
+    .selected {
+      background-color: blue;
+    }
   </style>
 </head>
 
@@ -96,21 +102,21 @@
       <table>
         <tbody>
           <tr>
-            <td id="seat01"></td>
-            <td id="seat02"></td>
+            <td id="seat1"></td>
+            <td id="seat2"></td>
             <td class="empty"></td>
-            <td id="seat03"></td>
-            <td id="seat04"></td>
+            <td id="seat3"></td>
+            <td id="seat4"></td>
           </tr>
           <tr>
-            <td id="seat05"></td>
-            <td id="seat06"></td>
+            <td id="seat5"></td>
+            <td id="seat6"></td>
             <td class="empty"></td>
-            <td id="seat07"></td>
-            <td id="seat08"></td>
+            <td id="seat7"></td>
+            <td id="seat8"></td>
           </tr>
           <tr>
-            <td id="seat09"></td>
+            <td id="seat9"></td>
             <td id="seat10"></td>
             <td class="empty"></td>
             <td id="seat11"></td>
@@ -118,14 +124,14 @@
           </tr>
           <tr>
             <td id="seat13"></td>
-            <td id="seat02"></td>
+            <td id="seat14"></td>
             <td class="empty"></td>
             <td id="seat15"></td>
             <td id="seat16"></td>
           </tr>
           <tr>
-            <td id="seat01"></td>
-            <td id="seat02"></td>
+            <td id="seat17"></td>
+            <td id="seat18"></td>
             <td class="empty"></td>
             <td id="seat19"></td>
             <td id="seat20"></td>
@@ -185,13 +191,14 @@
         <p>선택 좌석수 : <span id="All_Seats"></span>개</p>
         <p>총액 : <span id="amount"></span>원</p>
 
-        <input type="submit" id="payment" value="결제">
+        <button type="button" id="payment">결제</button>
       </form>
       <p>! 인원을 먼저 입력하고, 좌석을 선택해주세요.</p>
     </div>
   </section>
   <div id="bottomMenu"></div>
   <script src="checkLogin.js"></script>
+  <script src="selectSeat.js"></script>
 </body>
 
 </html>

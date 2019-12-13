@@ -35,7 +35,7 @@ function goPayment() {
     //예매한 사람 회원번호 : $_SESSION['userid'] (<---php에서 얻을 수 있음)
     //reserveList.txt에 예매한사람 회원번호|예매한 버스 번호로 기록하기 한줄씩
     var xhttp = new XMLHttpRequest();
-    var busnumber =  ((window.location.href).split("?"))[2];
+    var busnumber = (((window.location.href).split("?"))[2]).split(":")[1];
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         console.log("결제가 완료되었습니다.");

@@ -12,6 +12,9 @@ window.addEventListener('DOMContentLoaded', function() {
         document.getElementById("departTime").innerText = busDetailDataArray[3];
         document.getElementById("to").innerText = busDetailDataArray[2];
         // document.getElementById("Time_required").innerText = busDetailDataArray[4];
+        document.getElementById("recoYes").addEventListener("click",function() {
+          toAttractions(busDetailDataArray[2]);
+        });
       } else {
         alert("버스 정보 파일을 로드할 수 없습니다.");
       }
@@ -24,4 +27,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
 function no(){
   alert("관광명소 추천을 취소합니다.");
+}
+
+function toAttractions(dochak) {
+  location.href = "Attractions.html?toPlace:" + dochak;
 }

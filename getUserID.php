@@ -3,17 +3,24 @@
   header ("Content-type:text/html; charset=utf-8");
   $HTTP_REFERER=$_SERVER['HTTP_REFERER'];
 
-  $myfile = fopen("./data/reserveList.txt", "a+") or die("openError|");
-  echo $_SESSION['userid']+"|";
-  while (!feof($myfile)){
-    //사용자의 이름과 일치하는 기록을 전부 찾음
-      // $indata = explode('|',fgets($myfile));
-      // if((!strcmp($Email,$indata[0])) && (!strcmp($pw,$indata[1]))){
-      //   echo $indata[2];
-      //   $_SESSION['userid']=$indata[4];
-      //   return ;
-      // }
+  $memberFile = fopen("./data/busMember.txt", "a+") or die("openError|");
+  while (!feof($memberFile)){
+    $memberData = explode('|',fgets($memberFile));
+    if(strcmp($_SESSION['userid'],$memberData[4])==0){
+      echo "{$memberData[2]}|";
+      break;
+    }
   }
-  fclose($myfile);
+  fclose($memberFile);
+
+  $reservefile = fopen("./data/reserveList.txt", "a+") or die("openError|");
+  while (!feof($reservefile)){
+    $indata = explode('|',fgets($reservefile));
+    $isEqualId = $_SESSION['userid']==$indata[0];
+    if($isEqualId){
+      echo $indata[1]+"|";
+    }
+  }
+  fclose($reservefile);
 
  ?>
